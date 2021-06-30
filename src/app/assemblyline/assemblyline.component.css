@@ -1,0 +1,10 @@
+div#accordion {
+    display: inline-block;
+    margin-top: 2%;
+}
+
+.badge {
+    padding: 8px;
+    margin: 5px;
+    cursor: pointer;
+}

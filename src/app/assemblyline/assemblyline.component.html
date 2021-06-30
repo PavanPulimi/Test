@@ -1,0 +1,32 @@
+<div class="container-fluid col-sm-12">
+    <h3>Task One</h3>
+    <div class="input-group mb-1 col-sm-3">
+        <input type="text" class="form-control mt-2" [(ngModel)]="listItem" (keydown.enter)="addItem()" placeholder="Add Item" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    </div>
+    <div id="accordion" class="col-sm-3" *ngFor="let item of stages">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <label class="btn">
+                      {{item}}
+                    </label>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body" *ngIf="item === 'Idea'">
+                    <span class="badge badge-secondary" (contextmenu)="onRightClick(ele)" (click)="move(ele)" *ngFor="let ele of idea">{{ele}}</span>
+                </div>
+                <div class="card-body" *ngIf="item === 'Development'">
+                    <span class="badge badge-secondary" (contextmenu)="onRightClick(ele)" (click)="move(ele)" *ngFor="let ele of development">{{ele}}</span>
+                </div>
+                <div class="card-body" *ngIf="item === 'Testing'">
+                    <span class="badge badge-secondary" (contextmenu)="onRightClick(ele)" (click)="move(ele)" *ngFor="let ele of testing">{{ele}}</span>
+                </div>
+                <div class="card-body" *ngIf="item === 'Deployment'">
+                    <span class="badge badge-secondary" (contextmenu)="onRightClick(ele)" (click)="move(ele)" *ngFor="let ele of deployment">{{ele}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'assemblyline',
+  templateUrl: './assemblyline.component.html',
+  styleUrls: ['./assemblyline.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'AppTasks';
-  planning= [];
+export class AssemblylineComponent implements OnInit {
+  @Input() stages: string[];
+  constructor() { }
+  idea= [
+    "indigo",
+    "turquoise",
+    "magenta",
+    "fuschia"
+  ];
   development= [];
   testing= [];
   deployment = [];
@@ -18,14 +24,14 @@ export class AppComponent implements OnInit{
 
   addItem(): void {
     if(this.listItem){
-    this.planning.push(this.listItem);
+    this.idea.push(this.listItem);
     this.listItem = '';
     }
   }
 
   move(item): void {
-    if (this.planning.indexOf(item) !== -1) {
-      this.planning.splice(this.planning.indexOf(item), 1);
+    if (this.idea.indexOf(item) !== -1) {
+      this.idea.splice(this.idea.indexOf(item), 1);
       this.development.push(item);
     }else if (this.development.indexOf(item) !== -1) {
       this.development.splice(this.development.indexOf(item), 1);
@@ -42,11 +48,11 @@ export class AppComponent implements OnInit{
   }
 
   onRightClick(item): void{
-    if (this.planning.indexOf(item) !== -1) {
-      this.planning.splice(this.planning.indexOf(item), 1);
+    if (this.idea.indexOf(item) !== -1) {
+      this.idea.splice(this.idea.indexOf(item), 1);
     }else if (this.development.indexOf(item) !== -1) {
       this.development.splice(this.development.indexOf(item), 1);
-      this.planning.push(item);
+      this.idea.push(item);
     }else if (this.testing.indexOf(item) !== -1) {
       this.testing.splice(this.testing.indexOf(item), 1);
       this.development.push(item);
@@ -58,5 +64,5 @@ export class AppComponent implements OnInit{
       this.deployment.splice(this.deployment.indexOf(item), 1);
     }
   }
-}
 
+}

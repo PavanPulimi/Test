@@ -1,0 +1,11 @@
+<div class="form-group container-fluid col-sm-12">
+    <h3 class="mt-5">Task Two</h3>
+
+    <div class="form-group col-sm-3">
+        <label for="color">Group Size</label>
+        <input name="color" class="form-control" id="colors" (keydown.enter)="GetData($event)" />
+    </div>
+    <div class="badge badge-secondary" *ngFor="let item of counts | keyvalue"><span *ngIf="item.value[1] != 0">{{item?.value[0]}} : {{item?.value[1]}}</span></div>
+
+    <label class="lbl-msg">There are {{total}} complete groups of size {{input}}</label>
+</div>
